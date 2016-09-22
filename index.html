@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Github Gist API Search</title>
+        <!--  IE8 does not support html5 so we need to using a shim  -->
+        <!--[if lt IE 9]>
+            <script src="node_modules/html5shiv/dist/html5shiv.min.js"></script>
+        <![endif]-->
+    </head>
+    <body class="github-api" ng-app="github-api-app">
+        <div ng-controller="apiController" class="container">
+            <!-- header -->
+            <header class="header">
+                <h1 class="heading-primary">
+                    Github Gist API Search
+                </h1>
+            </header>
+            <main>
+                <!-- search form section -->
+                <section class="section-search section">
+                    <!-- clicking enter will subit the form -->
+                    <form class="user-form" ng-submit="searchUser()">
+                        <div class="form-row">
+                            <label for="username-input"
+                                class="label">
+                                Gist username
+                            </label>
+                            <input type="text"
+                                class="input"
+                                id="username-input"
+                                ng-model="gistAccountInput"
+                                placeholder="e.g. jamesdsmyth" />
+                           <button type="button"
+                                class="button"
+                                ng-disabled="!gistAccountInput.length" ng-click="searchUser()">
+                               Search user
+                           </button>
+                        </div>
+                    </form>
+                </section>
+                <!-- user details section -->
+                <section class="section" ng-if="user">
+                    <a ng-href={{user.url}}
+                        class="photo"
+                        target="_blank">
+                        <img ng-src={{user.avatar}}
+                            alt={{user.name}} />
+                    </a>
+                    <h2 class="heading-secondary">
+                        <a ng-href={{user.url}}
+                        target="_blank">
+                            {{user.name}}
+                        </a>
+                    </h2>
+                </section>
+
+                <!-- if no user exists show the error section -->
+                <section class="section" ng-if="errorMessage">
+                    <div class="photo">
+                        <img ng-src="./app/images/avatar.svg" alt="user not found" />
+                    </div>
+                    <h2 class="heading-secondary">
+                        User {{errorMessage}}
+                    </h2>
+                </section>
+
+                <!-- gists section -->
+                <section class="section-results section" ng-if="user.gists">
+                    <h2 class="heading-secondary">
+                        Gists ({{user.gists.length}})
+                    </h2>
+
+                    <!-- ng-repeat to display all the gists -->
+                    <ul class="results-list" ng-if="user.gists.length > 0">
+                        <li ng-repeat="gist in user.gists"
+                            class="list-item">
+                            <div class="gist-data">
+                                <h3 class="heading-tertiary">
+                                    <a ng-href={{gist.html_url}} target="_blank">
+                                        {{gist.description || 'Unnamed Gist'}}
+                                    </a>
+                                </h3>
+                                <span class="gist-description">
+                                    Last updated at {{gist.updated_at | date:'dd/MM/yyyy h:mma'}}
+                                </span>
+                                <!-- tagged section to display the languages used in the gist -->
+                                <div class="gist-tags">
+                                    <span class="tag {{key}}"
+                                        ng-repeat="(key, value) in gist.files | countBy: 'language'"
+                                        ng-if="tag.language !== null">
+                                            <!-- using angular filters here https://www.npmjs.com/package/angular-filter -->
+                                            {{key}} x {{value}}
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- displaying up to 3 users who have forked this gist -->
+                            <div class="gist-forks">
+                                <a ng-repeat="fork in gist.forks | limitTo: 3"
+                                    ng-href={{fork.owner.html_url}}
+                                    class="photo"
+                                    target="_blank">
+                                    <img ng-src={{fork.owner.avatar_url}}
+                                        alt={{fork.owner.login}} />
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- if the user does not have any gists display this message -->
+                    <p ng-if="user.gists.length === 0">
+                        {{user.name}} does not have any Gists
+                    </p>
+                </section>
+            </main>
+        </div>
+        <!-- bundle.js created by Webpack -->
+        <script src="/bundle.js"></script>
+    </body>
+</html>

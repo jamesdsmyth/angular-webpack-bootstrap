@@ -1,0 +1,15 @@
+/* adding box shadow to the sections */
+@mixin sectionBoxShadow ($pixels, $color) {
+    -webkit-box-shadow: $pixels $color;
+    -moz-box-shadow: $pixels $color;
+    -o-box-shadow: $pixels $color;
+    box-shadow: $pixels $color;
+}
+
+/* adding the curved edges on the buttons */
+@mixin borderRadius ($pixels) {
+    -webkit-border-radius: $pixels;
+    -moz-border-radius: $pixels;
+    -o-border-radius: $pixels;
+    border-radius: $pixels;
+}

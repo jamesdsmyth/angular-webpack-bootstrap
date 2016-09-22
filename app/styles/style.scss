@@ -1,0 +1,344 @@
+@import './_mixins.scss';
+@import './_reset.scss';
+
+/* general dimensions */
+$width-100: 100%;
+$width-container: 960px;
+
+/* colors */
+$color-body-bg: #ffffff;
+$color-section-bg: #fafafa;
+$color-section-border: #cecece;
+$color-input-border: #bfbfbf;
+$color-body-copy: #2a2a2a;
+$color-link-copy: #53b5e7;
+$color-link-hover-copy: #3297cb;
+
+/* fonts */
+$font-family: Arial, sans-serif;
+$font-size-base: 1em; /* 16px */
+$heading-primary-size: 1.5em; /* 24px */
+$heading-tertiary-size: 1.25em; /* 20px */
+$line-height-copy: 1.5em; /* 20px */
+$heading-primary-weight: 400;
+
+/* form */
+$width-form: 490px;
+$width-input: 210px;
+$padding-input: 7px 10px;
+
+/* general buttons */
+$color-button-disabled-bg: linear-gradient(#d4d4d4, #cccccc);
+$color-button-enabled-bg: linear-gradient(#71c2ea, #5bb7e5);
+$color-button-disabled-fallback-bg: #d4d4d4;
+$color-button-enabled-fallback-bg: #5bb7e5;
+
+$color-button-hover-enabled-bg: linear-gradient(#5bb7e5, #3599cb);
+$color-button-hover-enabled-fallback-bg: #3599cb;
+
+$color-button-copy: #ffffff;
+$height-button: 34px;
+
+/* Language tab colors */
+$color-tag-border: #cbcbcb;
+$color-javaScript: #fb6d51;
+$color-python: #ec5464;
+$color-coffeeScript: #ac92eb;
+$color-text: #47cf88;
+$color-css: #ffce53;
+$color-ruby: #9fd368;
+$color-css: #47cf88;
+$color-diff: #4fc1e9;
+$color-php: #5d9ceb;
+$color-markdown: #eb86c0;
+$color-json: #38a867;
+$color-html: #c92467;
+
+/* github api styles */
+.github-api {
+    font-family: $font-family;
+    font-size: 16px;
+    background: $color-body-bg;
+    color: $color-body-copy;
+
+    img {
+        width: auto;
+        max-width: 100%;
+        height: auto;
+    }
+
+    label,
+    input {
+        font-family: $font-family;
+        font-size: $font-size-base;
+        color: $color-body-copy;
+    }
+
+    /* heading styling */
+    .heading-primary {
+        text-align: center;
+        font-weight: $heading-primary-weight;
+        font-size: $heading-primary-size;
+        line-height: $heading-primary-size;
+        margin-bottom: 15px;
+    }
+
+    .heading-secondary {
+        text-align: center;
+        font-weight: $heading-primary-weight;
+        font-size: $heading-primary-size;
+        line-height: $heading-primary-size;
+        margin-bottom: 15px;
+    }
+
+    .heading-tertiary {
+        font-weight: $heading-primary-weight;
+        font-size: $heading-tertiary-size;
+        line-height: $heading-tertiary-size;
+        margin-bottom: 10px;
+    }
+
+    /* copy styling */
+    p {
+        font-size: $font-size-base;
+        line-height: $line-height-copy;
+        margin-bottom: 15px;
+    }
+
+    span {
+        font-size: $font-size-base;
+    }
+
+    a {
+        color: $color-link-copy;
+        text-decoration: none;
+
+        &:hover {
+            color: $color-link-hover-copy;
+            text-decoration: underline;
+        }
+    }
+
+    .container {
+        max-width: $width-container;
+        margin: 0 auto;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    .header {
+        width: $width-100;
+        padding: 10px 0;
+        float: left;
+    }
+
+    .main {
+        width: $width-100;
+        float: left;
+    }
+
+    .tag {
+        font-size: 0.875em;
+        font-weight: 600;
+        @include borderRadius(13px);
+        margin: 10px 10px 0px 0;
+        padding: 3px 13px;
+        color: #333333;
+        height: 22px;
+        display: inline-block;
+        line-height: 22px;
+        border: 1px solid $color-tag-border;
+
+        &.JavaScript {
+            background: $color-javaScript;
+        }
+
+        &.Python {
+            background: $color-python;
+        }
+
+        &.CoffeeScript {
+            background: $color-coffeeScript;
+        }
+
+        &.Text {
+            background: $color-text;
+        }
+
+        &.Diff {
+            background: $color-diff;
+        }
+
+        &.Markdown {
+            background: $color-markdown;
+        }
+
+        &.HTML {
+            background: $color-html;
+        }
+
+        &.PHP {
+            background: $color-php;
+        }
+
+        &.JSON {
+            background: $color-json;
+        }
+
+        &.Ruby {
+            background: $color-ruby;
+        }
+
+        &.CSS {
+            background: $color-css;
+        }
+    }
+
+    /* form */
+    .user-form {
+        max-width: $width-form;
+        width: $width-100;
+        margin: 0 auto;
+
+        .form-row {
+            width: $width-100;
+            float: left;
+            margin-bottom: 15px;
+            position: relative;
+
+            .input {
+                padding: $padding-input;
+                float: left;
+                margin-right: 15px;
+                width: $width-input;
+                border: 1px solid $color-input-border;
+                @include borderRadius(4px);
+                box-sizing: border-box;
+                z-index: 2;
+
+                @media (max-width: 550px) {
+                    width: 65%;
+                    margin-right: 0;
+                }
+            }
+
+            .label {
+                float: left;
+                font-size: $font-size-base;
+                margin: 10px 15px 0 0;
+
+                @media (max-width: 550px) {
+                    width: 35%;
+                    margin-right: 0;
+                }
+            }
+        }
+
+        .button {
+            height: $height-button;
+            font-size: $font-size-base;
+            color: $color-button-copy;
+            background: $color-button-enabled-fallback-bg; /* older browser fallback */
+            background: $color-button-enabled-bg;
+            padding: 0 15px;
+            border: none;
+            display: block;
+            text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.7);
+            @include borderRadius(4px);
+            cursor: pointer;
+            line-height: $height-button;
+            float: left;
+
+            @media (max-width: 550px) {
+                clear: left;
+                float: right;
+                margin-top: 10px;
+            }
+
+            &[disabled] {
+                background: $color-button-disabled-fallback-bg; /* older browser fallback */
+                background: $color-button-disabled-bg;
+                cursor: auto;
+            }
+
+            &:hover:not([disabled]) {
+                background: $color-button-hover-enabled-fallback-bg; /* older browser fallback */
+                background: $color-button-hover-enabled-bg;
+            }
+        }
+    }
+
+    .section {
+        margin-bottom: 20px;
+
+        float: left;
+        width: $width-100;
+
+        .photo {
+            display: block;
+            width: 160px;
+            height: 160px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            margin: 0 auto 10px;
+            @include borderRadius(20px);
+        }
+
+        &.section-search {
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid $color-section-border;
+        }
+
+        &.section-results {
+
+            .results-list {
+                width: $width-100;
+                float: left;
+
+                .list-item {
+                    width: $width-100;
+                    box-sizing: border-box;
+                    padding: 10px;
+                    float: left;
+                    margin-bottom: 15px;
+                    background: $color-section-bg;
+                    @include borderRadius(4px);
+                    @include sectionBoxShadow(0px 0px 1px 1px, $color-section-border);
+
+                    .gist-data {
+                        float: left;
+                        width: 60%;
+                        padding: 10px;
+                        box-sizing: border-box;
+                    }
+
+                    .gist-forks {
+                        width: 40%;
+                        float: left;
+                        padding: 10px;
+                        box-sizing: border-box;
+
+                        .photo {
+                            float: right;
+                            width: 50px;
+                            height: 50px;
+                            margin-left: 15px;
+                            @include borderRadius(4px);
+                        }
+                    }
+
+                    .gist-tags {
+                        float: left;
+                        width: $width-100;
+                    }
+
+                    .gist-description {
+                        display: block;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,6 +1,6 @@
 # Github User Gist API Search
 
-Angular 1x, Webpack and Babel build to search and retrieve GitHub user's gists using the GitHub API. The Gists retrieved displays the name of the Gist, last updated, list of file extensions and the last 3 users to fork that Gist. The app is responsive in theory should work on a mobile device...
+Angular 1x, Webpack and Babel build to search and retrieve GitHub user's Gists using the GitHub API. The Gists retrieved displays the name of the Gist, last updated, list of file extensions and the last 3 users to fork that Gist. The app is responsive in theory should work on a mobile device...
 
 
 ### How to run
